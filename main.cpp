@@ -137,20 +137,20 @@ int main() {
     }
 
     //dijkstra's shortest path algorithm
-    pair<stack<Node*>, int> shortestPath = dijkstra(&graph, start, end, limit);
+    pair<stack<Node*>*, int> shortestPath = dijkstra(&graph, start, end, limit);
 
     //if result, print results
-    stack<Node*>* path = &shortestPath.first;
-    if (*path.size() != 0) {
+    stack<Node*>* path = shortestPath.first;
+    if (path->size() != 0) {
         cout << endl << "\033[92mSUCCESS:\033[0m ";
-        while (path.size() != 1) {
-            cout << *path.top() << "->";
-            path.first.pop();
+        while (path->size() != 1) {
+            cout << *path->top() << "->";
+            path->pop();
         }
-        cout << path.top();
+        cout << *path->top() << endl << "Cost: " << shortestPath.second;
     }
-    cout << "\nPress Enter to Continue...";
+    cout << "\n\nPress Enter to Continue...";
     cin.ignore();
-
+    delete path;
     return 0;
 }

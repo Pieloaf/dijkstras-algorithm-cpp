@@ -17,11 +17,12 @@ Node* closestNode(map<Node*, int>* dist, vector<Node*>* unvisited) {
 }
 
 //Dijkstra's shortest path algorithm
-pair<stack<Node*>,int> dijkstra(map<char, Node*>* graph, char start, char end, int limit) {
+pair<stack<Node*>*,int> dijkstra(map<char, Node*>* graph, char start, char end, int limit) {
     vector<Node*> unvisited;
     map<Node*, int> nodeDist;
     map<Node*, Node*> prevNode;
-    stack<Node*> result;
+    stack<Node*>* path = new stack<Node*>;
+    pair<stack<Node*>*, int> result (path, 0);
     Node* current;
 
     //getting Node objects for the start and end (specified in the input)
@@ -78,12 +79,13 @@ pair<stack<Node*>,int> dijkstra(map<char, Node*>* graph, char start, char end, i
     }
     else {
         current = target;
+        result.second = nodeDist.at(target);
         while (current != source) {
-            result.push(current);
+            path->push(current);
             current = prevNode.at(current);
         }
-        result.push(current);
-        result.push(nodeDist.find(target))
+        path->push(current);
+        result.first = path;
     }
     return result;
 }
