@@ -7,6 +7,6 @@ extern const string E2 = "Logical Input Error";
 extern const string E3 = "No Suitable Route Found";
 
 void logError(string e) {
-	cout << "\033[91m\nERROR:\033[0m " << e << "\n\nPress Enter to Continue...";
+	cout << "\nERROR: " << e << "\n\nPress Enter to Continue...";
 	cin.ignore();
 }

@@ -142,7 +142,7 @@ int main() {
     //if result, print results
     stack<Node*>* path = shortestPath.first;
     if (path->size() != 0) {
-        cout << endl << "\033[92mSUCCESS:\033[0m ";
+        cout << endl << "SUCCESS: ";
         while (path->size() != 1) {
             cout << *path->top() << "->";
             path->pop();
